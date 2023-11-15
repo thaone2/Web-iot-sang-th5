@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name=" generator " content=" FET-IUH Iot Team ">
+    <meta name=" dcterms.created " content=" T6 ,14 Thg6 2019 01:37:13 GMT ">
+    <meta name=" description " content=" Design Platform for Iot Labboratory ">
+    <meta name=" keywords " content=" Internet of thing,LoraWan,Raspberry Pi4 ">
+    <title>Sample Website of FET-IUH Iot Team</title>
+</head>
+<body>
+    <div align=center>
+        <h2>FET-IUH Iot Team2</h2>
+        <p>          
+        <div align=center></div>
+        <font color="red"><b>Nhom2_TH_IOT</b></font><br />
+        </p>
+        <p>
+            <font color="red"><b>LED_ON: </b></font>
+            <button onclick="LED_On()">ON</button>
+            <font color="red"><b>LED_OFF: </b></font>
+            <button onclick="LED_Off()">OFF</button>
+        <div align=center></div>
+        <font color="red"><b>Button_Auto: </b></font>
+        <button onclick="Auto()">Auto</button>
+        <font color="red"><b>Button_Manual: </b></font>
+        <button onclick="Manual()">Manual</button>
+
+        <div align=center>
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1723169/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1723169/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+            <div align=center>
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1723177/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1723177/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+            </div>
+            </p>
+            <script>
+                var url = "https://api.thingspeak.com/update?";
+                var params_on = "api_key=4DXUW9T4KG89A96F&field1=1";
+                var params_off = "api_key=4DXUW9T4KG89A96F&field1=2";
+                var params_Auto = "api_key=4DXUW9T4KG89A96F&field2=1";
+                var params_Manual = "api_key=4DXUW9T4KG89A96F&field2=2";
+                var xhr = new XMLHttpRequest();
+                function LED_On() {
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhr.send(params_on);
+                }
+                function LED_Off() {
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhr.send(params_off);
+                }
+
+                function Auto() {
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhr.send(params_Auto);
+                }
+                function Manual() {
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhr.send(params_Manual);
+                }
+
+            </script>
+
+            <body>
+
+</html>
