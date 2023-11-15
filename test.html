@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="FET-IUH Iot Team">
+  <meta name="dcterms.created" content="T5,16 Thg11 2023 01:37:13 GMT">
+  <meta name="description" content="Design Platform for Iot Laboratory">
+  <meta name="keywords" content="Internet of thing,LoraWan,Raspberry Pi4">
+  <title>Sample Website of FET-IUH Iot Team</title>
+</head>
+
+<body>
+  <div align="center">
+    <h2>FET-IUH Iot Team</h2>
+    <p>
+      <font color="red"><b>FET-IUH IoT Team</b></font><br />
+      <font color="blue">Design Platform for Iot Laboratory</font><br />
+    </p>
+    <p>
+      <font color="green">Click on button for control LED</font><br />
+      <button onclick="sendRequest('api_key=CVW77OQ3699SDMD1&field3=1')">ON</button>
+      <button onclick="sendRequest('api_key=CVW77OQ3699SDMD1&field3=2')">OFF</button>
+      <button onclick="sendRequest('api_key=CVW77OQ3699SDMD1&field4=1')">Auto</button>
+      <button onclick="sendRequest('api_key=CVW77OQ3699SDMD1&field4=2')">Manual</button>
+    </p>
+    <div align="center">
+      <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2338557/charts/1?async&bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=200&type=line"></iframe>
+      <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2338557/charts/2?async&bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=200&type=line"></iframe>
+      <div align="center">
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2338557/charts/3?async&bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2338557/charts/4?async&bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+      </div>
+    </div>
+    <script>
+      function sendRequest(params) 
+      {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://api.thingspeak.com/update?", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(params);
+      }
+    </script>
+  </body>
+</html>
